@@ -162,7 +162,7 @@
 <dt class="sig sig-object py" id="ivy.functional.ivy.creation.full_like">
 <span class="sig-prename descclassname">ivy.</span></span><span class="sig-name descname"><span class="pre">full_like</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/ivy/functional/ivy/creation.html#full_like"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.functional.ivy.creation.full_like" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a new array filled with <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> and having the same <code class="docutils literal notranslate"><span class="pre">shape</span></code> as
-an input array <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+an input array <code class="docutils literal notranslate"><span class="pre">x</span></code> .</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -194,14 +194,67 @@ inputs broadcast to.</p></li>
 </p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<p class="rubric">Functional Examples</p>
+<p>With int datatype:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ivy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fill_value</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="go">ivy.array([1, 1, 1, 1, 1, 1])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fill_value</span> <span class="o">=</span> <span class="mf">0.000123</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">ivy.array([0.000123, 0.000123, 0.000123, 0.000123, 0.000123])</span>
 </pre></div>
 </div>
+<p>with float datatype:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ivy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">])</span> <span class="c1"># for filling values with floating datatype the array is required to be of same dtype (float in this case)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fill_value</span> <span class="o">=</span> <span class="mf">0.000123</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">ivy.array([0.000123, 0.000123, 0.000123, 0.000123, 0.000123, 0.000123])</span>
+</pre></div>
+</div>
+<p>with torch.Tensor input:</p>
+<blockquote>
+<div><p># ivy.full_like will give you output as ivy array
+&gt;&gt;&gt; import ivy
+&gt;&gt;&gt; import torch
+&gt;&gt;&gt; x = torch.Tensor([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+&gt;&gt;&gt; fill_value = 0.001
+&gt;&gt;&gt; y = ivy.full_like(x, fill_value)
+&gt;&gt;&gt; print(y)
+ivy.array([0.001, 0.001, 0.001, 0.001, 0.001, 0.001])</p>
+</div></blockquote>
+<p>With ivy.NativeArray input:</p>
+<blockquote>
+<div><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">native_array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fill_value</span> <span class="o">=</span> <span class="mf">0.000123</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fill_value</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">ivy.array([0.000123, 0.000123])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x2</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">native_array</span><span class="p">([[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">8.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span>
+<span class="go">                            [2., 8., 3.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x2</span> <span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">ivy.array([[0.000123, 0.000123, 0.000123],</span>
+</pre></div>
+</div>
+<p>[0.000123, 0.000123, 0.000123]])</p>
+</div></blockquote>
+<dl>
+<dt>With ivy.Array input:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fill_value</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">fill_value</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">ivy.array([1, 1, 1, 1, 1, 1])</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="line-block">

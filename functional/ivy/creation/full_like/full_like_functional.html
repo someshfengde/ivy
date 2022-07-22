@@ -218,17 +218,6 @@ inputs broadcast to.</p></li>
 <span class="go">ivy.array([0.000123, 0.000123, 0.000123, 0.000123, 0.000123, 0.000123])</span>
 </pre></div>
 </div>
-<p>With torch.Tensor input:</p>
-<blockquote>
-<div><p># ivy.full_like will give you output as ivy array
-&gt;&gt;&gt; import ivy
-&gt;&gt;&gt; import torch
-&gt;&gt;&gt; x = torch.Tensor([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
-&gt;&gt;&gt; fill_value = 0.001
-&gt;&gt;&gt; y = ivy.full_like(x, fill_value)
-&gt;&gt;&gt; print(y)
-ivy.array([0.001, 0.001, 0.001, 0.001, 0.001, 0.001])</p>
-</div></blockquote>
 <p>With ivy.NativeArray input:</p>
 <blockquote>
 <div><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">native_array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">])</span>
